@@ -492,7 +492,15 @@
             }
 
             .grid2 {
-                grid-template-columns: 1fr 1fr
+                grid-template-columns: 1fr 1fr;
+                row-gap: 0;
+                column-gap: 28px;
+            }
+
+            /* En 2 columnas: el 2do item está arriba a la derecha, sin borde */
+            .grid2 .block:nth-child(2) {
+                border-top: 0;
+                padding-top: 0;
             }
 
             .table th,
