@@ -1238,15 +1238,26 @@
 
         // Search
         (function () {
-            const input = document.getElementById('q'); const secs = document.querySelectorAll('section[id]'); let hits = [];
-            function clear() { hits.forEach(e => e.classList.remove('highlight')); hits = [] }
-            function find() {
-                const q = (input.value || '').trim().toLowerCase(); clear(); if (!q) return;
-                secs.forEach(s => { if ((s.innerText || '').toLowerCase().includes(q)) { s.classList.add('highlight'); hits.push(s) } });
-                if (hits.length) hits[0].scrollIntoView({ behavior: 'smooth', block: 'center' })
+            const input = document.getElementById('q');
+            const secs = document.querySelectorAll('section[id]');
+            let hits = [];
+            function clear() { hits.forEach(e => e.classList.remove('highlight')); hits = []; }
+            function highlight() {
+                const q = (input.value || '').trim().toLowerCase();
+                clear();
+                if (!q) return;
+                secs.forEach(s => { if ((s.innerText || '').toLowerCase().includes(q)) { s.classList.add('highlight'); hits.push(s); } });
             }
-            let t; input.addEventListener('input', () => { clearTimeout(t); t = setTimeout(find, 180) });
-            input.addEventListener('keydown', e => { if (e.key === 'Enter') find(); if (e.key === 'Escape') { input.value = ''; clear() } })
+            function find() {
+                highlight();
+                if (hits.length) hits[0].scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+            let t;
+            input.addEventListener('input', () => { clearTimeout(t); t = setTimeout(highlight, 200); });
+            input.addEventListener('keydown', e => {
+                if (e.key === 'Enter') { e.preventDefault(); find(); }
+                if (e.key === 'Escape') { input.value = ''; clear(); }
+            });
         })();
 
         // Expand/Collapse
