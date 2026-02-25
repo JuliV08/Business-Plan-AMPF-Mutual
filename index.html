@@ -577,12 +577,21 @@
         }
 
         .btn.primary {
-            background: var(--accent-glow);
-            border-color: rgba(59, 130, 246, .4)
+            border-color: rgba(59, 130, 246, .4);
+            color: var(--accent2);
         }
 
         .btn.primary:hover {
-            background: rgba(59, 130, 246, .35)
+            background: rgba(59, 130, 246, .25)
+        }
+
+        .btn:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px
+        }
+
+        .btn:focus:not(:focus-visible) {
+            outline: none
         }
 
         /* === METRIC HIGHLIGHT === */
@@ -1262,9 +1271,31 @@
 
         // Expand/Collapse
         (function () {
-            const d = document.querySelectorAll('.block-desc,.table-wrap,.callout,section p');
-            document.getElementById('expandAll').addEventListener('click', () => d.forEach(e => e.style.display = ''));
-            document.getElementById('collapseAll').addEventListener('click', () => d.forEach(e => e.style.display = 'none'))
+            var collapsed = false;
+            var collapseBtn = document.getElementById('collapseAll');
+            var expandBtn = document.getElementById('expandAll');
+
+            collapseBtn.addEventListener('click', function () {
+                if (collapsed) return;
+                collapsed = true;
+                document.querySelectorAll('.block-desc, .callout, .table-wrap, .section-head p, section > p').forEach(function (el) {
+                    el.dataset.prevDisplay = el.style.display || '';
+                    el.style.display = 'none';
+                });
+                collapseBtn.style.background = 'rgba(59,130,246,.25)';
+                expandBtn.style.background = '';
+            });
+
+            expandBtn.addEventListener('click', function () {
+                if (!collapsed) return;
+                collapsed = false;
+                document.querySelectorAll('.block-desc, .callout, .table-wrap, .section-head p, section > p').forEach(function (el) {
+                    el.style.display = el.dataset.prevDisplay || '';
+                });
+                expandBtn.style.background = 'rgba(59,130,246,.25)';
+                collapseBtn.style.background = '';
+                setTimeout(function () { expandBtn.style.background = ''; }, 600);
+            });
         })();
 
         // Print
