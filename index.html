@@ -64,14 +64,14 @@
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
+            width: 100vw;
+            max-width: 100%;
             height: var(--nav-h);
             z-index: 100;
             background: rgba(11, 26, 47, .82);
             backdrop-filter: blur(18px) saturate(1.4);
             border-bottom: 1px solid var(--glass-border);
-            transition: box-shadow .3s;
-            overflow: hidden
+            transition: box-shadow .3s
         }
 
         .nav.scrolled {
