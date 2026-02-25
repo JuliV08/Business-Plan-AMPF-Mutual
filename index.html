@@ -303,8 +303,11 @@
         }
 
         .block {
+            min-width: 0;
             padding: 10px 0;
             border-top: 1px solid rgba(255, 255, 255, .12);
+            overflow-wrap: break-word;
+            word-break: break-word;
         }
 
         .block:first-child {
@@ -313,14 +316,16 @@
         }
 
         .t {
-            font-weight: 800
+            font-weight: 800;
+            overflow-wrap: break-word;
         }
 
         .d {
             color: var(--muted);
             margin-top: 6px;
             font-size: 13px;
-            line-height: 1.6
+            line-height: 1.6;
+            overflow-wrap: break-word;
         }
 
         /* Tables */
