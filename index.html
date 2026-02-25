@@ -1,0 +1,1163 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Business Plan | AMPF Mutual — E-commerce Nacional con Descuento por Haberes</title>
+    <meta name="description"
+        content="Business plan ejecutivo: e-commerce para mutual con financiamiento y descuento por recibo de sueldo." />
+    <style>
+        :root {
+            --bg: #173791;
+            --bg2: #0f275f;
+            --txt: #ffffff;
+            --muted: rgba(255, 255, 255, .78);
+            --muted2: rgba(255, 255, 255, .62);
+            --line: rgba(255, 255, 255, .18);
+            --accent: #4A7BD0;
+            --shadow: 0 18px 60px rgba(0, 0, 0, .22);
+            --max: 1100px;
+            --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html,
+        body {
+            height: 100%
+        }
+
+        body {
+            margin: 0;
+            font-family: var(--font);
+            color: var(--txt);
+            background:
+                radial-gradient(900px 500px at 15% -10%, rgba(74, 123, 208, .42), transparent 60%),
+                radial-gradient(900px 500px at 100% 10%, rgba(255, 255, 255, .10), transparent 55%),
+                linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
+            overflow-x: hidden;
+        }
+
+        /* Top progress bar */
+        .progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            z-index: 50;
+            background: rgba(255, 255, 255, .08);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, .10);
+        }
+
+        .progress>div {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, rgba(74, 123, 208, .85), rgba(255, 255, 255, .65));
+            box-shadow: 0 0 18px rgba(74, 123, 208, .50);
+            transition: width .08s linear;
+        }
+
+        /* Layout (sin tarjetas) */
+        .wrap {
+            max-width: var(--max);
+            margin: 0 auto;
+            padding: 86px 16px 70px;
+        }
+
+        header {
+            padding: 2px 0 16px;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .badge-row {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
+
+        .badge {
+            display: inline-flex;
+            gap: 8px;
+            align-items: center;
+            padding: 7px 10px;
+            border: 1px solid rgba(255, 255, 255, .16);
+            border-radius: 999px;
+            background: rgba(0, 0, 0, .10);
+            font-size: 12px;
+            color: var(--muted);
+            letter-spacing: .2px;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 99px;
+            background: var(--accent);
+            box-shadow: 0 0 14px rgba(74, 123, 208, .8)
+        }
+
+        h1 {
+            margin: 10px 0 8px;
+            font-size: 28px;
+            line-height: 1.15;
+            letter-spacing: -.4px;
+        }
+
+        .sub {
+            margin: 0;
+            color: var(--muted);
+            line-height: 1.6;
+            font-size: 14px;
+            max-width: 72ch;
+        }
+
+        /* KPI row (sin cards) */
+        .kpis {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+            margin: 16px 0 0;
+        }
+
+        .kpi {
+            padding: 12px 0;
+            border-top: 1px solid rgba(255, 255, 255, .14);
+        }
+
+        .kpi .label {
+            font-size: 12px;
+            color: var(--muted2);
+            text-transform: uppercase;
+            letter-spacing: .35px
+        }
+
+        .kpi .value {
+            font-size: 16px;
+            font-weight: 750;
+            margin-top: 6px
+        }
+
+        .kpi .hint {
+            font-size: 12px;
+            color: var(--muted);
+            margin-top: 6px;
+            line-height: 1.5
+        }
+
+        /* Toolbar */
+        .toolbar {
+            margin-top: 16px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid var(--line);
+            padding-top: 14px;
+        }
+
+        .toolbar-btns {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .search {
+            flex: 1 1 180px;
+            min-width: 0;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            border: 1px solid rgba(255, 255, 255, .14);
+            background: rgba(0, 0, 0, .12);
+            border-radius: 999px;
+            padding: 10px 12px;
+        }
+
+        .search input {
+            width: 100%;
+            background: transparent;
+            border: 0;
+            outline: none;
+            color: var(--txt);
+            font-size: 14px;
+        }
+
+        .search input::placeholder {
+            color: rgba(255, 255, 255, .55)
+        }
+
+        .btn {
+            border: 1px solid rgba(255, 255, 255, .16);
+            background: rgba(255, 255, 255, .08);
+            color: var(--txt);
+            border-radius: 999px;
+            padding: 10px 12px;
+            font-weight: 650;
+            font-size: 13px;
+            cursor: pointer;
+            transition: transform .15s ease, background .15s ease, border-color .15s ease;
+            white-space: nowrap;
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+            background: rgba(255, 255, 255, .12);
+            border-color: rgba(255, 255, 255, .22)
+        }
+
+        .btn.primary {
+            background: rgba(74, 123, 208, .28);
+            border-color: rgba(74, 123, 208, .55);
+            box-shadow: 0 10px 28px rgba(74, 123, 208, .16);
+        }
+
+        .btn.primary:hover {
+            background: rgba(74, 123, 208, .38)
+        }
+
+        /* Chips nav */
+        nav.chips {
+            margin: 14px 0 0;
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .chip {
+            padding: 8px 10px;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, .14);
+            background: rgba(255, 255, 255, .06);
+            color: var(--muted);
+            font-size: 12px;
+            cursor: pointer;
+            transition: background .15s ease, transform .15s ease;
+            user-select: none;
+        }
+
+        .chip.active {
+            background: rgba(74, 123, 208, .25);
+            color: rgba(255, 255, 255, .95);
+            border-color: rgba(74, 123, 208, .45)
+        }
+
+        .chip:hover {
+            transform: translateY(-1px)
+        }
+
+        /* Sections (sin tarjetas) */
+        main {
+            margin-top: 18px;
+        }
+
+        section {
+            padding: 18px 0;
+            border-bottom: 1px solid var(--line);
+        }
+
+        section:last-child {
+            border-bottom: 0
+        }
+
+        h2 {
+            margin: 0 0 10px;
+            font-size: 18px;
+            letter-spacing: -.2px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .pill {
+            font-size: 11px;
+            padding: 5px 8px;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, .16);
+            color: var(--muted);
+            background: rgba(0, 0, 0, .10);
+        }
+
+        p {
+            margin: 10px 0;
+            color: var(--muted);
+            line-height: 1.7;
+            font-size: 14px
+        }
+
+        /* Lists (sin cards) */
+        .grid2 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .block {
+            padding: 10px 0;
+            border-top: 1px solid rgba(255, 255, 255, .12);
+        }
+
+        .block:first-child {
+            border-top: 0;
+            padding-top: 0
+        }
+
+        .t {
+            font-weight: 800
+        }
+
+        .d {
+            color: var(--muted);
+            margin-top: 6px;
+            font-size: 13px;
+            line-height: 1.6
+        }
+
+        /* Tables */
+        .table-wrap {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .table {
+            width: 100%;
+            min-width: 480px;
+            border-collapse: collapse;
+            margin-top: 12px;
+            border-top: 1px solid rgba(255, 255, 255, .18);
+        }
+
+        .table th,
+        .table td {
+            padding: 10px 6px;
+            text-align: left;
+            font-size: 13px;
+            border-bottom: 1px solid rgba(255, 255, 255, .10);
+            color: var(--muted);
+            vertical-align: top;
+        }
+
+        .table th {
+            color: rgba(255, 255, 255, .92);
+            font-size: 12px;
+            letter-spacing: .35px;
+            text-transform: uppercase;
+        }
+
+        /* Tags */
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 6px 9px;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, .16);
+            background: rgba(0, 0, 0, .10);
+            color: rgba(255, 255, 255, .88);
+            font-size: 12px;
+            white-space: nowrap;
+            margin-top: 8px;
+            margin-right: 6px;
+        }
+
+        .tag .s {
+            width: 7px;
+            height: 7px;
+            border-radius: 99px;
+            background: rgba(255, 255, 255, .7)
+        }
+
+        .tag.ok .s {
+            background: #2ecc71
+        }
+
+        .tag.warn .s {
+            background: #f1c40f
+        }
+
+        .tag.bad .s {
+            background: #e74c3c
+        }
+
+        /* Callouts (sin “caja tarjeta”, solo línea + fondo suave) */
+        .callout {
+            margin-top: 12px;
+            padding: 12px 0 0;
+            border-top: 1px dashed rgba(255, 255, 255, .26);
+            color: rgba(255, 255, 255, .92);
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 20px;
+            color: rgba(255, 255, 255, .75);
+            font-size: 12px;
+            text-align: center;
+            padding: 10px 0 0;
+            border-top: 1px solid var(--line);
+        }
+
+        .mono {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        }
+
+        /* Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity .45s ease, transform .45s ease;
+        }
+
+        .reveal.on {
+            opacity: 1;
+            transform: translateY(0)
+        }
+
+        .highlight {
+            outline: 2px solid rgba(74, 123, 208, .55);
+            outline-offset: 6px;
+            border-radius: 12px
+        }
+
+        @media (max-width: 480px) {
+            .wrap {
+                padding: 76px 12px 60px;
+            }
+
+            h1 {
+                font-size: 22px;
+            }
+
+            .toolbar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .toolbar-btns {
+                justify-content: flex-end;
+            }
+
+            .search {
+                width: 100%;
+            }
+
+            .badge-row {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        @media (min-width: 920px) {
+            .wrap {
+                padding: 92px 18px 86px;
+            }
+
+            h1 {
+                font-size: 34px;
+            }
+
+            .kpis {
+                grid-template-columns: 1fr 1fr;
+                gap: 18px
+            }
+
+            .kpi {
+                border-top: 0;
+                border-left: 1px solid rgba(255, 255, 255, .14);
+                padding: 0 0 0 14px
+            }
+
+            .kpi:nth-child(1),
+            .kpi:nth-child(2) {
+                border-left: 0;
+                padding-left: 0
+            }
+
+            .grid2 {
+                grid-template-columns: 1fr 1fr
+            }
+
+            .table th,
+            .table td {
+                padding: 12px 10px
+            }
+        }
+
+        @media print {
+
+            .progress,
+            .toolbar,
+            .chips {
+                display: none !important
+            }
+
+            body {
+                background: #fff;
+                color: #000
+            }
+
+            header,
+            section,
+            .footer {
+                border-color: #ddd
+            }
+
+            p,
+            .d,
+            .table td {
+                color: #222
+            }
+
+            .badge,
+            .pill,
+            .tag {
+                border-color: #ddd;
+                color: #111;
+                background: #f7f7f7
+            }
+
+            .callout {
+                border-top: 1px dashed #bbb;
+                color: #111
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="progress" aria-hidden="true">
+        <div id="progressBar"></div>
+    </div>
+
+    <div class="wrap">
+        <header class="reveal" data-section="Resumen ejecutivo">
+            <div class="badge-row">
+                <div class="badge"><span class="dot"></span> Documento interno • Business Plan E-commerce Mutual</div>
+                <div class="badge">Versión: <span class="mono">v1.1</span> • Fecha: <span id="today"></span></div>
+            </div>
+
+            <h1>AMPF Mutual — E-commerce nacional con financiamiento y descuento por haberes</h1>
+            <p class="sub">
+                Plan ejecutivo para transformar el negocio de préstamos en una <b>plataforma de consumo financiado</b>
+                (productos + crédito), capturando margen comercial, interés y retención, con alcance federal sin CAPEX
+                de sucursales.
+            </p>
+
+            <div class="kpis">
+                <div class="kpi">
+                    <div class="label">North Star Metric</div>
+                    <div class="value">Adopción anual de afiliados</div>
+                    <div class="hint">% afiliados que compran al menos 1 vez por año en el canal</div>
+                </div>
+                <div class="kpi">
+                    <div class="label">Unidad económica</div>
+                    <div class="value">Margen + Interés por operación</div>
+                    <div class="hint">Margen comercial + spread financiero (neto de costo operativo y pérdida esperada)
+                    </div>
+                </div>
+                <div class="kpi">
+                    <div class="label">Ventaja competitiva</div>
+                    <div class="value">Cobro por recibo (descuento haberes)</div>
+                    <div class="hint">Reduce riesgo, simplifica underwriting y habilita pricing agresivo</div>
+                </div>
+                <div class="kpi">
+                    <div class="label">Go-to-market</div>
+                    <div class="value">Cupo preaprobado visible</div>
+                    <div class="hint">“Tenés disponible $X para comprar” como disparador de conversión</div>
+                </div>
+            </div>
+
+            <div class="callout">
+                <b>Tesis de negocio:</b> pasar de “originación de préstamos” a “ecosistema cerrado”:
+                capturar <b>triple ingreso</b> (margen producto + interés + retención) con operación digital escalable.
+            </div>
+
+            <div class="toolbar">
+                <div class="search" title="Buscador dentro del business plan">
+                    <span class="mono">⌕</span>
+                    <input id="q" placeholder="Buscar (ej: scoring, logística, descuento, motos, SLA)..." />
+                </div>
+                <div class="toolbar-btns">
+                    <button class="btn" id="expandAll">Mostrar todo</button>
+                    <button class="btn" id="collapseAll">Modo resumen</button>
+                    <button class="btn primary" id="print">Imprimir / PDF</button>
+                </div>
+            </div>
+
+            <nav class="chips" aria-label="Atajos a secciones">
+                <div class="chip active" data-jump="Resumen ejecutivo">Resumen</div>
+                <div class="chip" data-jump="Propuesta de valor">Propuesta</div>
+                <div class="chip" data-jump="Productos">Productos</div>
+                <div class="chip" data-jump="Modelo de crédito">Crédito</div>
+                <div class="chip" data-jump="Operación y logística">Operación</div>
+                <div class="chip" data-jump="Cobranzas y conciliación">Cobranzas</div>
+                <div class="chip" data-jump="Riesgos y compliance">Riesgos</div>
+                <div class="chip" data-jump="Roadmap 12 meses">Roadmap</div>
+                <div class="chip" data-jump="KPIs y reporting">KPIs</div>
+            </nav>
+        </header>
+
+        <main id="content">
+            <section class="reveal" data-section="Propuesta de valor">
+                <h2>Propuesta de valor <span class="pill">Afiliado + Mutual + Proveedor</span></h2>
+                <div class="grid2">
+                    <div class="block">
+                        <div class="t">Para afiliados</div>
+                        <div class="d">Acceso a bienes de alta utilidad/aspiración con <b>cuotas por recibo</b>,
+                            condiciones preferenciales y experiencia nacional 100% digital.</div>
+                    </div>
+                    <div class="block">
+                        <div class="t">Para la mutual</div>
+                        <div class="d">Diversificación de ingresos: <b>margen comercial + interés</b>. Menor mora por
+                            descuento haberes. Más retención y cross-selling financiero.</div>
+                    </div>
+                    <div class="block">
+                        <div class="t">Para proveedores</div>
+                        <div class="d">Canal B2B2C con conversión alta por financiamiento. Volumen federal, menor costo
+                            comercial y reglas claras por SLA.</div>
+                    </div>
+                    <div class="block">
+                        <div class="t">Ventaja estratégica</div>
+                        <div class="d">“Closed-loop commerce”: e-commerce como beneficio mutual apalancado por capacidad
+                            de cobro y scoring interno.</div>
+                    </div>
+                </div>
+
+                <div class="table-wrap">
+                    <table class="table" aria-label="Diferenciadores">
+                        <thead>
+                            <tr>
+                                <th>Componente</th>
+                                <th>Descripción</th>
+                                <th>Impacto</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><b>Cupo preaprobado</b></td>
+                                <td>El afiliado ve “disponible $X” según reglas y datos de haberes.</td>
+                                <td><span class="tag ok"><span class="s"></span>Sube conversión</span></td>
+                            </tr>
+                            <tr>
+                                <td><b>Descuento por recibo</b></td>
+                                <td>Recaudación mensual automática + conciliación por nómina.</td>
+                                <td><span class="tag ok"><span class="s"></span>Baja mora</span></td>
+                            </tr>
+                            <tr>
+                                <td><b>Catálogo curado</b></td>
+                                <td>SKUs diseñados para cuota accesible y baja fricción de postventa.</td>
+                                <td><span class="tag warn"><span class="s"></span>Gestión de mix</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="reveal" data-section="Productos">
+                <h2>Mix de productos recomendado <span class="pill">Rotación + financiabilidad</span></h2>
+                <p>
+                    Regla de portfolio: vender productos con <b>alta utilidad</b>, <b>ticket financiable</b> y <b>baja
+                        fricción operativa</b>.
+                    Arranque sin stock (fulfillment proveedor) y escalado a stock estratégico con data.
+                </p>
+
+                <div class="block">
+                    <div class="t">1) Tecnología</div>
+                    <div class="d">
+                        Smartphones, smart TVs, notebooks, tablets, consolas. Motor de demanda.
+                        <span class="tag ok"><span class="s"></span>Conversión alta</span>
+                        <span class="tag warn"><span class="s"></span>Garantías</span>
+                    </div>
+                </div>
+
+                <div class="block">
+                    <div class="t">2) Línea blanca / electro</div>
+                    <div class="d">
+                        Heladeras, lavarropas, microondas, aires. Alto “valor social”.
+                        <span class="tag ok"><span class="s"></span>Demanda estable</span>
+                        <span class="tag warn"><span class="s"></span>Volumétricos</span>
+                    </div>
+                </div>
+
+                <div class="block">
+                    <div class="t">3) Movilidad (motos / e-mobility)</div>
+                    <div class="d">
+                        Motos 110/125cc, scooters eléctricos, bicis eléctricas. Ticket alto y margen ampliado con
+                        prenda/garantía.
+                        <span class="tag ok"><span class="s"></span>Ticket alto</span>
+                        <span class="tag warn"><span class="s"></span>Documentación</span>
+                    </div>
+                </div>
+
+                <div class="block">
+                    <div class="t">4) Hogar & bienestar</div>
+                    <div class="d">
+                        Colchones, sillones, fitness, climatización. Excelente para cuotas largas.
+                        <span class="tag ok"><span class="s"></span>Cross-sell</span>
+                    </div>
+                </div>
+
+                <div class="block">
+                    <div class="t">5) Servicios (vouchers) — opcional</div>
+                    <div class="d">
+                        Ópticas, odontología, educación, turismo. Casi sin logística: se opera como voucher/código.
+                        <span class="tag ok"><span class="s"></span>Margen neto</span>
+                    </div>
+                </div>
+
+                <div class="callout">
+                    <b>Catálogo MVP:</b> 30–80 SKUs. Optimizar por: cuota promedio, margen total, reclamos, rotación.
+                </div>
+            </section>
+
+            <section class="reveal" data-section="Modelo de crédito">
+                <h2>Modelo de crédito & underwriting <span class="pill">Escalable y auditable</span></h2>
+                <p>
+                    Objetivo operativo: <b>80–90% de aprobaciones automáticas</b> con reglas claras, trazabilidad y
+                    controles de riesgo.
+                </p>
+
+                <div class="grid2">
+                    <div class="block">
+                        <div class="t">Regla de capacidad de pago</div>
+                        <div class="d">Cuota máxima sugerida: <b>30–40%</b> del ingreso neto, ajustada por descuentos
+                            existentes.</div>
+                    </div>
+                    <div class="block">
+                        <div class="t">Cupo preaprobado</div>
+                        <div class="d">Rangos (Conservador/Estándar/Pro) para acelerar decisión y ordenar el riesgo.
+                        </div>
+                    </div>
+                    <div class="block">
+                        <div class="t">Score interno mutual</div>
+                        <div class="d">Antigüedad, historial, moras, estabilidad, tipo de empleador. Output:
+                            tasa/plazo/cupo.</div>
+                    </div>
+                    <div class="block">
+                        <div class="t">Firma digital + legajo</div>
+                        <div class="d">Contrato + cesión haberes + consentimiento datos + condiciones compra, con
+                            sellado de tiempo.</div>
+                    </div>
+                </div>
+
+                <div class="table-wrap">
+                    <table class="table" aria-label="Flujo de aprobación">
+                        <thead>
+                            <tr>
+                                <th>Etapa</th>
+                                <th>Acción</th>
+                                <th>Automatización</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><b>1. Identificación</b></td>
+                                <td>Login DNI + validación afiliado + empleador.</td>
+                                <td><span class="tag ok"><span class="s"></span>Auto</span></td>
+                            </tr>
+                            <tr>
+                                <td><b>2. Pre-score</b></td>
+                                <td>Cupo y cuota máxima según política.</td>
+                                <td><span class="tag ok"><span class="s"></span>Auto</span></td>
+                            </tr>
+                            <tr>
+                                <td><b>3. Simulación</b></td>
+                                <td>Plazo/tasa/seguro opcional.</td>
+                                <td><span class="tag ok"><span class="s"></span>Auto</span></td>
+                            </tr>
+                            <tr>
+                                <td><b>4. Controles</b></td>
+                                <td>Mora, límites, documentación.</td>
+                                <td><span class="tag warn"><span class="s"></span>Mixta</span></td>
+                            </tr>
+                            <tr>
+                                <td><b>5. Aprobación</b></td>
+                                <td>Auto-OK o derivación a analista (casos borde).</td>
+                                <td><span class="tag ok"><span class="s"></span>80–90%</span></td>
+                            </tr>
+                            <tr>
+                                <td><b>6. Contratación</b></td>
+                                <td>Firma digital + plan de cuotas.</td>
+                                <td><span class="tag ok"><span class="s"></span>Auto</span></td>
+                            </tr>
+                            <tr>
+                                <td><b>7. Cobranza</b></td>
+                                <td>Descuento haberes + conciliación mensual.</td>
+                                <td><span class="tag ok"><span class="s"></span>Auto</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="callout">
+                    <b>Política recomendada:</b> 6–36 meses; tasa por score; cupo incremental para buen pagador; bloqueo
+                    preventivo ante mora.
+                </div>
+            </section>
+
+            <section class="reveal" data-section="Operación y logística">
+                <h2>Operación & logística <span class="pill">SLA + governance</span></h2>
+                <p>
+                    Para escalar nacional sin fricción: arrancar con <b>fulfillment del proveedor</b> (sin stock) y
+                    gobernar por SLA.
+                    La mutual retiene la marca y la experiencia end-to-end.
+                </p>
+
+                <div class="grid2">
+                    <div class="block">
+                        <div class="t">Fase 1 (sin stock)</div>
+                        <div class="d">Proveedores despachan; mutual controla pricing, financiación, comunicación y
+                            postventa.</div>
+                    </div>
+                    <div class="block">
+                        <div class="t">Fase 2 (stock estratégico)</div>
+                        <div class="d">10–20 SKUs top para mejorar tiempos y margen, justificado por data
+                            (ventas/reclamos/devoluciones).</div>
+                    </div>
+                    <div class="block">
+                        <div class="t">Atención al afiliado</div>
+                        <div class="d">Mesa de ayuda (WhatsApp + tickets): entrega, garantía, cambios, facturación.
+                            Escalamiento por SLA.</div>
+                    </div>
+                    <div class="block">
+                        <div class="t">Postventa y garantías</div>
+                        <div class="d">Política DOA, ventanas de cambio, garantías oficiales, retiros volumétricos
+                            definidos.</div>
+                    </div>
+                </div>
+
+                <div class="table-wrap">
+                    <table class="table" aria-label="SLA sugeridos">
+                        <thead>
+                            <tr>
+                                <th>SLA</th>
+                                <th>Objetivo</th>
+                                <th>Dueño</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Confirmación orden</td>
+                                <td>≤ 24 hs hábiles</td>
+                                <td><b>Mutual</b></td>
+                            </tr>
+                            <tr>
+                                <td>Despacho</td>
+                                <td>24–72 hs hábiles</td>
+                                <td><b>Proveedor</b></td>
+                            </tr>
+                            <tr>
+                                <td>Entrega</td>
+                                <td>2–7 días (AMBA/Interior)</td>
+                                <td><b>Logística</b></td>
+                            </tr>
+                            <tr>
+                                <td>1ra respuesta reclamo</td>
+                                <td>≤ 4 hs hábiles</td>
+                                <td><b>Mutual</b></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="callout">
+                    <b>Governance:</b> comité semanal con proveedores (stock, tiempos, reclamos) + bonos/penalidades por
+                    SLA para alinear incentivos.
+                </div>
+            </section>
+
+            <section class="reveal" data-section="Cobranzas y conciliación">
+                <h2>Cobranzas & conciliación <span class="pill">Backoffice robusto</span></h2>
+                <p>
+                    La ventaja competitiva es el cobro. La excelencia operativa está en la <b>conciliación mensual</b> y
+                    el circuito con empleadores.
+                </p>
+
+                <div class="block">
+                    <div class="t">Circuito con empleadores</div>
+                    <div class="d">Convenio → autorización afiliado → instrucción de descuento → confirmación en nómina
+                        → depósito → conciliación.</div>
+                </div>
+                <div class="block">
+                    <div class="t">Conciliación mensual</div>
+                    <div class="d">Esperado vs recibido. Gestión de diferencias: licencias, bajas, cambios de empleador,
+                        topes.</div>
+                </div>
+                <div class="block">
+                    <div class="t">Gestión de riesgo</div>
+                    <div class="d">Alertas por corte de descuento. Plan B: débito alternativo / refinanciación /
+                        reestructuración.</div>
+                </div>
+
+                <div class="callout">
+                    <b>Control crítico:</b> en tickets altos, no confirmar despacho sin validación del descuento
+                    aprobado (según política).
+                </div>
+            </section>
+
+            <section class="reveal" data-section="Riesgos y compliance">
+                <h2>Riesgos & compliance <span class="pill">Mitigación por diseño</span></h2>
+                <p>
+                    Operación auditable y alineada al marco mutual. Objetivo: crecer sin fricción regulatoria ni costo
+                    reputacional.
+                </p>
+
+                <div class="table-wrap">
+                    <table class="table" aria-label="Riesgos y mitigación">
+                        <thead>
+                            <tr>
+                                <th>Riesgo</th>
+                                <th>Señal</th>
+                                <th>Mitigación</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><b>Mora / corte descuento</b></td>
+                                <td>Interrupción nómina, cambios laborales</td>
+                                <td>Alertas + cupo dinámico + cobranzas alternativas + política de excepciones</td>
+                            </tr>
+                            <tr>
+                                <td><b>Reclamos postventa</b></td>
+                                <td>Demoras/daños/garantías</td>
+                                <td>SLA + mesa de ayuda + proveedores certificados + DOA</td>
+                            </tr>
+                            <tr>
+                                <td><b>Riesgo reputacional</b></td>
+                                <td>Pricing opaco / sobre-endeudamiento</td>
+                                <td>Transparencia TNA/TEA, simulador, cuota máxima, educación financiera</td>
+                            </tr>
+                            <tr>
+                                <td><b>Fraude</b></td>
+                                <td>Identidad dudosa / desvío entrega</td>
+                                <td>KYC básico, OTP, domicilio verificado, controles internos</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="callout">
+                    <b>Política de riesgo:</b> “crecer con control”. Empezar por categorías de baja complejidad y
+                    ampliar cuando KPIs estén estables.
+                </div>
+            </section>
+
+            <section class="reveal" data-section="Roadmap 12 meses">
+                <h2>Roadmap 12 meses <span class="pill">MVP → Escala</span></h2>
+
+                <div class="block">
+                    <div class="t">Mes 1–2: MVP</div>
+                    <div class="d">Catálogo inicial + 2–4 proveedores + motor cupo + firma digital + mesa de ayuda +
+                        conciliación básica.</div>
+                </div>
+                <div class="block">
+                    <div class="t">Mes 3–4: Performance</div>
+                    <div class="d">Campañas por cupo preaprobado + tuning de tasa/plazo + tablero ejecutivo + refuerzo
+                        SLA.</div>
+                </div>
+                <div class="block">
+                    <div class="t">Mes 5–8: Expansión</div>
+                    <div class="d">Movilidad / categorías complejas + stock estratégico + acuerdos regionales + programa
+                        referidos.</div>
+                </div>
+                <div class="block">
+                    <div class="t">Mes 9–12: Plataforma</div>
+                    <div class="d">Marketplace cerrado multi-proveedor + vouchers + automatización de conciliación +
+                        segmentación avanzada por score.</div>
+                </div>
+            </section>
+
+            <section class="reveal" data-section="KPIs y reporting">
+                <h2>KPIs & reporting <span class="pill">Dirección + Operación</span></h2>
+
+                <div class="grid2">
+                    <div class="block">
+                        <div class="t">Comercial</div>
+                        <div class="d">Conversión, ticket, adopción, mix, recompra, performance por campaña.</div>
+                    </div>
+                    <div class="block">
+                        <div class="t">Financiero</div>
+                        <div class="d">Margen bruto total, mora 30/60/90, pérdida esperada, refinanciaciones, cohortes.
+                        </div>
+                    </div>
+                    <div class="block">
+                        <div class="t">Operación</div>
+                        <div class="d">SLA despacho/entrega, reclamos, devoluciones, tiempos de resolución, NPS/CSAT.
+                        </div>
+                    </div>
+                    <div class="block">
+                        <div class="t">Riesgo</div>
+                        <div class="d">% autoaprobación, excepciones, fraude, concentración por empleador, alertas por
+                            corte descuento.</div>
+                    </div>
+                </div>
+
+                <div class="callout">
+                    <b>Cadencia:</b> weekly ops (SLA + reclamos) • monthly board (P&L + cartera + riesgo) • quarterly
+                    estrategia (mix + expansión).
+                </div>
+            </section>
+
+            <section class="reveal" data-section="Cierre">
+                <h2>Cierre ejecutivo <span class="pill">Decisión de directorio</span></h2>
+                <p>
+                    Esta iniciativa reposiciona a la mutual como <b>plataforma</b> (no solo prestamista), con alcance
+                    federal y mayor captura de margen.
+                    El descuento por haberes habilita pricing competitivo con riesgo acotado.
+                </p>
+
+                <div class="grid2">
+                    <div class="block">
+                        <div class="t">Decisiones a aprobar</div>
+                        <div class="d">Política de crédito, categorías MVP, modelo de proveedores, circuito de descuento
+                            y governance operativo.</div>
+                    </div>
+                    <div class="block">
+                        <div class="t">Entregables inmediatos</div>
+                        <div class="d">(1) RACI + SLA (2) Modelo financiero 36 meses (3) Catálogo y acuerdos (4) Plan
+                            GTM por cupo preaprobado.</div>
+                    </div>
+                </div>
+
+                <div class="callout">
+                    <b>Objetivo 90 días:</b> MVP operativo, primeras ventas, tablero de control y backlog de expansión
+                    soportado por datos reales.
+                </div>
+            </section>
+        </main>
+
+        <div class="footer">
+            <div>Documento base — completar con números reales (afiliados, ticket, tasa, mix, convenios empleadores).
+            </div>
+            <div style="margin-top:6px">Tip: <span class="mono">Ctrl/Cmd+P</span> para exportar a PDF.</div>
+        </div>
+    </div>
+
+    <script>
+        // Fecha local
+        (function () {
+            const d = new Date();
+            const fmt = new Intl.DateTimeFormat('es-AR', { year: 'numeric', month: 'long', day: '2-digit' });
+            document.getElementById('today').textContent = fmt.format(d);
+        })();
+
+        // Barra de progreso lectura
+        (function () {
+            const bar = document.getElementById('progressBar');
+            const onScroll = () => {
+                const doc = document.documentElement;
+                const scrollTop = doc.scrollTop || document.body.scrollTop;
+                const height = doc.scrollHeight - doc.clientHeight;
+                const p = height > 0 ? (scrollTop / height) * 100 : 0;
+                bar.style.width = p.toFixed(2) + '%';
+            };
+            window.addEventListener('scroll', onScroll, { passive: true });
+            onScroll();
+        })();
+
+        // Reveal
+        (function () {
+            const els = Array.from(document.querySelectorAll('.reveal'));
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) {
+                        e.target.classList.add('on');
+                        io.unobserve(e.target);
+                    }
+                });
+            }, { threshold: 0.12 });
+            els.forEach(el => io.observe(el));
+        })();
+
+        // Chips jump
+        (function () {
+            const chips = Array.from(document.querySelectorAll('.chip'));
+            chips.forEach(ch => {
+                ch.addEventListener('click', () => {
+                    chips.forEach(c => c.classList.remove('active'));
+                    ch.classList.add('active');
+                    const target = ch.getAttribute('data-jump');
+                    const el = document.querySelector('[data-section="' + CSS.escape(target) + '"]');
+                    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                });
+            });
+        })();
+
+        // Buscador: resalta secciones
+        (function () {
+            const input = document.getElementById('q');
+            const sections = Array.from(document.querySelectorAll('[data-section]'));
+            let lastHits = [];
+
+            function clearHits() {
+                lastHits.forEach(el => el.classList.remove('highlight'));
+                lastHits = [];
+            }
+
+            function find() {
+                const q = (input.value || '').trim().toLowerCase();
+                clearHits();
+                if (!q) return;
+
+                const hits = sections.filter(sec => {
+                    const title = (sec.getAttribute('data-section') || '').toLowerCase();
+                    const text = (sec.innerText || '').toLowerCase();
+                    return title.includes(q) || text.includes(q);
+                });
+
+                hits.slice(0, 6).forEach(el => {
+                    el.classList.add('highlight');
+                    lastHits.push(el);
+                });
+
+                if (hits.length) hits[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+
+            let t = null;
+            input.addEventListener('input', () => {
+                if (t) clearTimeout(t);
+                t = setTimeout(find, 160);
+            });
+            input.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') find();
+                if (e.key === 'Escape') { input.value = ''; clearHits(); }
+            });
+        })();
+
+        // Modo resumen: oculta detalles (tablas, descripciones)
+        (function () {
+            const expandBtn = document.getElementById('expandAll');
+            const collapseBtn = document.getElementById('collapseAll');
+            const detailBlocks = Array.from(document.querySelectorAll('.d, .table, .callout, p'));
+            const keep = new Set(); // por si querés preservar algo puntual
+
+            const setMode = (mode) => {
+                detailBlocks.forEach(el => {
+                    if (keep.has(el)) return;
+                    el.style.display = (mode === 'collapse') ? 'none' : '';
+                });
+            };
+
+            expandBtn.addEventListener('click', () => setMode('expand'));
+            collapseBtn.addEventListener('click', () => setMode('collapse'));
+        })();
+
+        // Print
+        document.getElementById('print').addEventListener('click', () => window.print());
+    </script>
+</body>
+
+</html>
